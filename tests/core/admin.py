@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from import_export.admin import ExportActionModelAdmin, ImportExportMixin, ImportMixin
 from import_export.resources import ModelResource
+from import_export.formats import base_formats
 
 from .forms import CustomConfirmImportForm, CustomImportForm
 from .models import Author, Book, Category, Child, EBook
@@ -27,7 +28,8 @@ class BookAdmin(ImportExportMixin, admin.ModelAdmin):
 
 
 class CategoryAdmin(ExportActionModelAdmin):
-    pass
+    formats = [base_formats.CSV]
+    # pass
 
 
 class AuthorAdmin(ImportMixin, admin.ModelAdmin):
